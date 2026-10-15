@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,3 +29,14 @@ jobs:
         with:
           name: AramaKaydedici-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Releases sayfasına koy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk AramaKaydedici.apk
+          gh release delete son-surum --cleanup-tag --yes || true
+          gh release create son-surum AramaKaydedici.apk \
+            --title "Arama Kaydedici (son sürüm)" \
+            --notes "Telefondan bu sayfayı açıp AramaKaydedici.apk dosyasına dokunarak indirip kurun." \
+            --target "${{ github.sha }}"
