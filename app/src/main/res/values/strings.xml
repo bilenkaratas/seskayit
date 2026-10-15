@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Arama Kaydedici</string>
+    <string name="acc_desc">Telefon ve WhatsApp aramaları sırasında mikrofona erişip görüşmeyi kaydetmek için gereklidir. Ekran içeriği okunmaz.</string>
+</resources>
