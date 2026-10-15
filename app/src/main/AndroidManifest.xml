@@ -29,6 +29,14 @@
             android:exported="false"
             android:foregroundServiceType="microphone" />
 
+        <receiver
+            android:name=".PhoneStateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".CallAccessibilityService"
             android:exported="true"
